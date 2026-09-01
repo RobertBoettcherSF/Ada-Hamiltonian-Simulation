@@ -269,7 +269,7 @@ package body Hamiltonian_Simulation is
      (Initial_State : in     State_Vector;
       Terms         : in     Term_Array;
       Time          : in     Simulation_Time;
-      Order         : in     Positive range 1 .. 10;
+      Order         : in     Taylor_Order;
       Num_Qubits    : in     Positive;
       Final_State   :    out State_Vector)
    is

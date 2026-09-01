@@ -70,11 +70,13 @@ package body Hamiltonian_Simulation is
                   if Bit = 0 then
                      declare
                         Partner : constant State_Index := State_Index (Integer (I) + Mask);
-                        Old_I   : constant Complex_Number := Temp (I);
-                        Old_P   : constant Complex_Number := Temp (Partner);
+                        V0      : constant Complex_Number := Temp (I);
+                        V1      : constant Complex_Number := Temp (Partner);
                      begin
-                        State (I) := (Re => C * Old_I.Re + S * Old_P.Im,
-                                      Im => C * Old_I.Im - S * Old_P.Re);
+                        State (I) := (Re => C * V0.Re + S * V1.Im,
+                                      Im => C * V0.Im - S * V1.Re);
+                        State (Partner) := (Re => C * V1.Re + S * V0.Im,
+                                            Im => C * V1.Im - S * V0.Re);
                      end;
                   end if;
                end;
@@ -88,20 +90,13 @@ package body Hamiltonian_Simulation is
                   if Bit = 0 then
                      declare
                         Partner : constant State_Index := State_Index (Integer (I) + Mask);
-                        Old_I   : constant Complex_Number := Temp (I);
-                        Old_P   : constant Complex_Number := Temp (Partner);
+                        V0      : constant Complex_Number := Temp (I);
+                        V1      : constant Complex_Number := Temp (Partner);
                      begin
-                        State (I) := (Re => C * Old_I.Re - S * Old_P.Re,
-                                      Im => C * Old_I.Im - S * Old_P.Im);
-                     end;
-                  else
-                     declare
-                        Partner : constant State_Index := State_Index (Integer (I) - Mask);
-                        Old_I   : constant Complex_Number := Temp (I);
-                        Old_P   : constant Complex_Number := Temp (Partner);
-                     begin
-                        State (I) := (Re => C * Old_I.Re + S * Old_P.Re,
-                                      Im => C * Old_I.Im + S * Old_P.Im);
+                        State (I) := (Re => C * V0.Re - S * V1.Re,
+                                      Im => C * V0.Im - S * V1.Im);
+                        State (Partner) := (Re => S * V0.Re + C * V1.Re,
+                                            Im => S * V0.Im + C * V1.Im);
                      end;
                   end if;
                end;
@@ -148,16 +143,11 @@ package body Hamiltonian_Simulation is
                   if Bit = 0 then
                      declare
                         Partner : constant State_Index := State_Index (Integer (I) + Mask);
-                        Val_P   : constant Complex_Number := Temp (Partner);
+                        V0      : constant Complex_Number := Temp (I);
+                        V1      : constant Complex_Number := Temp (Partner);
                      begin
-                        State (I) := (Re => Alpha * Val_P.Im, Im => -Alpha * Val_P.Re);
-                     end;
-                  else
-                     declare
-                        Partner : constant State_Index := State_Index (Integer (I) - Mask);
-                        Val_P   : constant Complex_Number := Temp (Partner);
-                     begin
-                        State (I) := (Re => Alpha * Val_P.Im, Im => -Alpha * Val_P.Re);
+                        State (I) := (Re => Alpha * V1.Im, Im => -Alpha * V1.Re);
+                        State (Partner) := (Re => Alpha * V0.Im, Im => -Alpha * V0.Re);
                      end;
                   end if;
                end;
@@ -171,16 +161,11 @@ package body Hamiltonian_Simulation is
                   if Bit = 0 then
                      declare
                         Partner : constant State_Index := State_Index (Integer (I) + Mask);
-                        Val_P   : constant Complex_Number := Temp (Partner);
+                        V0      : constant Complex_Number := Temp (I);
+                        V1      : constant Complex_Number := Temp (Partner);
                      begin
-                        State (I) := (Re => Alpha * Val_P.Re, Im => Alpha * Val_P.Im);
-                     end;
-                  else
-                     declare
-                        Partner : constant State_Index := State_Index (Integer (I) - Mask);
-                        Val_P   : constant Complex_Number := Temp (Partner);
-                     begin
-                        State (I) := (Re => -Alpha * Val_P.Re, Im => -Alpha * Val_P.Im);
+                        State (I) := (Re => -Alpha * V1.Re, Im => -Alpha * V1.Im);
+                        State (Partner) := (Re => Alpha * V0.Re, Im => Alpha * V0.Im);
                      end;
                   end if;
                end;

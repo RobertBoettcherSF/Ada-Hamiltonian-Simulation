@@ -37,7 +37,7 @@ package body Hamiltonian_Simulation is
       S     : constant Long_Float := Sin (Angle);
       Q     : constant Natural := Natural (Term.Target_Qubit);
       Mask  : constant Natural := 2 ** Q;
-      Temp  : State_Vector := State;
+      Temp  : constant State_Vector := State;
    begin
       case Term.Op_Type is
          when Identity =>
@@ -117,7 +117,7 @@ package body Hamiltonian_Simulation is
       Alpha : constant Long_Float := Term.Coefficient;
       Q     : constant Natural := Natural (Term.Target_Qubit);
       Mask  : constant Natural := 2 ** Q;
-      Temp  : State_Vector := State;
+      Temp  : constant State_Vector := State;
    begin
       case Term.Op_Type is
          when Identity =>
@@ -194,8 +194,9 @@ package body Hamiltonian_Simulation is
       Num_Qubits : in     Positive;
       Result     :    out State_Vector)
    is
-      pragma Unused (Num_Qubits);
+      Dummy : constant Positive := Num_Qubits;
    begin
+      pragma Unused (Dummy);
       for I in Result'Range loop
          Result (I) := (Re => 0.0, Im => 0.0);
       end loop;

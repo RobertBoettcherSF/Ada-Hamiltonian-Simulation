@@ -194,9 +194,8 @@ package body Hamiltonian_Simulation is
       Num_Qubits : in     Positive;
       Result     :    out State_Vector)
    is
-      Dummy : constant Positive := Num_Qubits;
+      pragma Warnings (Off, Num_Qubits);
    begin
-      pragma Unused (Dummy);
       for I in Result'Range loop
          Result (I) := (Re => 0.0, Im => 0.0);
       end loop;

@@ -19,8 +19,8 @@ begin
    -- TEST 1 — Trotter 1st Order Z Rotation
    Put_Line ("TEST 1 — Trotter 1st Order Z Rotation");
    declare
-      Init_State : State_Vector (0 .. 1) := ((Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0));
-      Terms      : Term_Array := ((Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 0));
+      Init_State : State_Vector (0 .. 1) := [ (Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0) ];
+      Terms      : Term_Array := [ (Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 0) ];
       Final      : State_Vector (0 .. 1);
    begin
       Simulate_Trotter_1st (Init_State, Terms, 1.0, 10, 1, Final);
@@ -32,8 +32,8 @@ begin
    -- TEST 2 — Trotter 1st Order X Rotation
    Put_Line ("TEST 2 — Trotter 1st Order X Rotation");
    declare
-      Init_State : State_Vector (0 .. 1) := ((Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0));
-      Terms      : Term_Array := ((Op_Type => Sigma_X, Coefficient => 1.5707963, Target_Qubit => 0));
+      Init_State : State_Vector (0 .. 1) := [ (Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0) ];
+      Terms      : Term_Array := [ (Op_Type => Sigma_X, Coefficient => 1.5707963, Target_Qubit => 0) ];
       Final      : State_Vector (0 .. 1);
    begin
       Simulate_Trotter_1st (Init_State, Terms, 1.0, 20, 1, Final);
@@ -45,9 +45,9 @@ begin
    -- TEST 3 — Trotter 1st Order Multi-Term Hamiltonian
    Put_Line ("TEST 3 — Trotter 1st Order Multi-Term Hamiltonian");
    declare
-      Init_State : State_Vector (0 .. 1) := ((Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0));
-      Terms      : Term_Array := ((Op_Type => Sigma_Z, Coefficient => 0.5, Target_Qubit => 0),
-                                  (Op_Type => Sigma_X, Coefficient => 0.3, Target_Qubit => 0));
+      Init_State : State_Vector (0 .. 1) := [ (Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0) ];
+      Terms      : Term_Array := [ (Op_Type => Sigma_Z, Coefficient => 0.5, Target_Qubit => 0),
+                                   (Op_Type => Sigma_X, Coefficient => 0.3, Target_Qubit => 0) ];
       Final      : State_Vector (0 .. 1);
    begin
       Simulate_Trotter_1st (Init_State, Terms, 0.5, 5, 1, Final);
@@ -59,8 +59,8 @@ begin
    -- TEST 4 — Trotter 2nd Order Single Term
    Put_Line ("TEST 4 — Trotter 2nd Order Single Term");
    declare
-      Init_State : State_Vector (0 .. 1) := ((Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0));
-      Terms      : Term_Array := ((Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 0));
+      Init_State : State_Vector (0 .. 1) := [ (Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0) ];
+      Terms      : Term_Array := [ (Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 0) ];
       Final      : State_Vector (0 .. 1);
    begin
       Simulate_Trotter_2nd (Init_State, Terms, 1.0, 10, 1, Final);
@@ -72,9 +72,9 @@ begin
    -- TEST 5 — Trotter 2nd Order Multi-Term
    Put_Line ("TEST 5 — Trotter 2nd Order Multi-Term");
    declare
-      Init_State : State_Vector (0 .. 1) := ((Re => 0.7071, Im => 0.0), (Re => 0.7071, Im => 0.0));
-      Terms      : Term_Array := ((Op_Type => Sigma_X, Coefficient => 0.4, Target_Qubit => 0),
-                                  (Op_Type => Sigma_Z, Coefficient => 0.6, Target_Qubit => 0));
+      Init_State : State_Vector (0 .. 1) := [ (Re => 0.7071, Im => 0.0), (Re => 0.7071, Im => 0.0) ];
+      Terms      : Term_Array := [ (Op_Type => Sigma_X, Coefficient => 0.4, Target_Qubit => 0),
+                                   (Op_Type => Sigma_Z, Coefficient => 0.6, Target_Qubit => 0) ];
       Final      : State_Vector (0 .. 1);
    begin
       Simulate_Trotter_2nd (Init_State, Terms, 0.8, 10, 1, Final);
@@ -86,8 +86,8 @@ begin
    -- TEST 6 — Taylor Series Simulation (Order 2)
    Put_Line ("TEST 6 — Taylor Series Simulation (Order 2)");
    declare
-      Init_State : State_Vector (0 .. 1) := ((Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0));
-      Terms      : Term_Array := ((Op_Type => Sigma_Z, Coefficient => 0.5, Target_Qubit => 0));
+      Init_State : State_Vector (0 .. 1) := [ (Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0) ];
+      Terms      : Term_Array := [ (Op_Type => Sigma_Z, Coefficient => 0.5, Target_Qubit => 0) ];
       Final      : State_Vector (0 .. 1);
    begin
       Simulate_Taylor (Init_State, Terms, 0.1, 2, 1, Final);
@@ -99,8 +99,8 @@ begin
    -- TEST 7 — Taylor Series Simulation (Higher Order)
    Put_Line ("TEST 7 — Taylor Series Simulation (Higher Order)");
    declare
-      Init_State : State_Vector (0 .. 1) := ((Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0));
-      Terms      : Term_Array := ((Op_Type => Sigma_X, Coefficient => 1.0, Target_Qubit => 0));
+      Init_State : State_Vector (0 .. 1) := [ (Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0) ];
+      Terms      : Term_Array := [ (Op_Type => Sigma_X, Coefficient => 1.0, Target_Qubit => 0) ];
       Final      : State_Vector (0 .. 1);
    begin
       Simulate_Taylor (Init_State, Terms, 0.2, 5, 1, Final);
@@ -112,7 +112,7 @@ begin
    -- TEST 8 — Error Estimation 1st Order
    Put_Line ("TEST 8 — Error Estimation 1st Order");
    declare
-      Terms : Term_Array := ((Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 0));
+      Terms : Term_Array := [ (Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 0) ];
       Err   : Long_Float;
    begin
       Err := Estimate_Trotter_Error (Terms, 1.0, 10, 1);
@@ -124,7 +124,7 @@ begin
    -- TEST 9 — Error Estimation 2nd Order
    Put_Line ("TEST 9 — Error Estimation 2nd Order");
    declare
-      Terms : Term_Array := ((Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 0));
+      Terms : Term_Array := [ (Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 0) ];
       Err2  : Long_Float;
    begin
       Err2 := Estimate_Trotter_Error (Terms, 1.0, 10, 2);
@@ -136,7 +136,7 @@ begin
    -- TEST 10 — Validation of Terms
    Put_Line ("TEST 10 — Validation of Terms");
    declare
-      Terms : Term_Array := ((Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 0));
+      Terms : Term_Array := [ (Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 0) ];
       Valid : Boolean;
    begin
       Valid := Validate_Terms (Terms, 1);
@@ -148,8 +148,8 @@ begin
    -- TEST 11 — Invalid Hamiltonian Exception Handling
    Put_Line ("TEST 11 — Invalid Hamiltonian Exception Handling");
    declare
-      Init_State : State_Vector (0 .. 1) := ((Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0));
-      Terms      : Term_Array := ((Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 5));
+      Init_State : State_Vector (0 .. 1) := [ (Re => 1.0, Im => 0.0), (Re => 0.0, Im => 0.0) ];
+      Terms      : Term_Array := [ (Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 5) ];
       Final      : State_Vector (0 .. 1);
       Caught     : Boolean := False;
    begin
@@ -167,8 +167,8 @@ begin
    -- TEST 12 — Zero Time Simulation
    Put_Line ("TEST 12 — Zero Time Simulation");
    declare
-      Init_State : State_Vector (0 .. 1) := ((Re => 0.6, Im => 0.8), (Re => 0.0, Im => 0.0));
-      Terms      : Term_Array := ((Op_Type => Sigma_X, Coefficient => 1.0, Target_Qubit => 0));
+      Init_State : State_Vector (0 .. 1) := [ (Re => 0.6, Im => 0.8), (Re => 0.0, Im => 0.0) ];
+      Terms      : Term_Array := [ (Op_Type => Sigma_X, Coefficient => 1.0, Target_Qubit => 0) ];
       Final      : State_Vector (0 .. 1);
    begin
       Simulate_Trotter_1st (Init_State, Terms, 0.0, 10, 1, Final);
@@ -180,12 +180,12 @@ begin
    -- TEST 13 — Multi-Qubit Simulation (2 Qubits, 4 States)
    Put_Line ("TEST 13 — Multi-Qubit Simulation (2 Qubits, 4 States)");
    declare
-      Init_State : State_Vector (0 .. 3) := ((Re => 1.0, Im => 0.0),
+      Init_State : State_Vector (0 .. 3) := [ (Re => 1.0, Im => 0.0),
                                              (Re => 0.0, Im => 0.0),
                                              (Re => 0.0, Im => 0.0),
-                                             (Re => 0.0, Im => 0.0));
-      Terms      : Term_Array := ((Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 0),
-                                  (Op_Type => Sigma_Z, Coefficient => 0.5, Target_Qubit => 1));
+                                             (Re => 0.0, Im => 0.0) ];
+      Terms      : Term_Array := [ (Op_Type => Sigma_Z, Coefficient => 1.0, Target_Qubit => 0),
+                                   (Op_Type => Sigma_Z, Coefficient => 0.5, Target_Qubit => 1) ];
       Final      : State_Vector (0 .. 3);
    begin
       Simulate_Trotter_1st (Init_State, Terms, 1.0, 10, 2, Final);

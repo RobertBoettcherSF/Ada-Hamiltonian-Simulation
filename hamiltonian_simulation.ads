@@ -12,6 +12,7 @@ package Hamiltonian_Simulation is
    type Step_Count is range 1 .. 1_000_000;
    type Qubit_Index is range 0 .. 3; -- Supporting up to 4 qubits (16 state amplitudes)
    type State_Index is range 0 .. 15;
+   subtype Taylor_Order is Positive range 1 .. 10;
 
    type Complex_Number is record
       Re : Long_Float := 0.0;
@@ -70,7 +71,7 @@ package Hamiltonian_Simulation is
      (Initial_State : in     State_Vector;
       Terms         : in     Term_Array;
       Time          : in     Simulation_Time;
-      Order         : in     Positive range 1 .. 10;
+      Order         : in     Taylor_Order;
       Num_Qubits    : in     Positive;
       Final_State   :    out State_Vector)
      with Pre  => Initial_State'Length = 2 ** Num_Qubits
